@@ -1,0 +1,55 @@
+\documentclass[a4paper, 12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{natbib}
+
+
+% Document
+\begin{document}
+
+\begin{titlepage}
+\centering
+
+\vspace*{1cm}
+
+\includegraphics[width=0.37\textwidth]{figures/tum.png}
+\hspace*{1cm}
+
+
+\vspace*{2cm}
+
+{\LARGE \textbf{Lab Report:}} \\
+{\Large Bell’s Inequality and Quantum Tomography}
+
+\vspace*{2cm}
+
+Kutay Dengizek, Danylo Kolesnyk, Özgün Ozan Nacitarhan
+
+\vspace*{2cm}
+
+Garching – December 2, 2024
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% Include sections
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/experimental_setup}
+\input{sections/measurement_and_results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+% References
+\bibliographystyle{plainnat}
+\bibliography{bibliography/references}
+
+\end{document}
