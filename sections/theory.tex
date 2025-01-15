@@ -1,2 +1,76 @@
 \section{Theory}
-THeory section.
+
+\subsection{Qubits and Entanglement}
+A \textbf{qubit} is a two-level quantum system. For photonic qubits, we commonly identify the horizontal ($\ket{H}$) and vertical ($\ket{V}$) polarizations as computational basis states:
+\[
+\ket{0} \equiv \ket{H}, 
+\quad
+\ket{1} \equiv \ket{V}.
+\]
+Any single-qubit polarization state can be written as a superposition
+\[
+\ket{\psi} = a \ket{H} + b \ket{V},
+\]
+with complex coefficients $a$ and $b$ satisfying $|a|^2 + |b|^2 = 1$. Geometrically, the state space of a single qubit can be visualized on the Bloch (or Poincaré) sphere.
+
+\paragraph{Two-Qubit States.}
+When two qubits are involved, the joint state lives in the tensor product of two 2-dimensional Hilbert spaces. A general two-qubit state can be expressed as
+\[
+\ket{\Psi} = 
+  a_{HH}\ket{HH} + a_{HV}\ket{HV} + a_{VH}\ket{VH} + a_{VV}\ket{VV}.
+\]
+If this state cannot be decomposed as a product of two single-qubit states, it is called \emph{entangled}. One of the most famous families of entangled two-qubit states is the set of four \emph{Bell states}:
+\begin{align*}
+\ket{\phi^+} &= \frac{1}{\sqrt{2}}(\ket{HH} + \ket{VV}), \\
+\ket{\phi^-} &= \frac{1}{\sqrt{2}}(\ket{HH} - \ket{VV}), \\
+\ket{\psi^+} &= \frac{1}{\sqrt{2}}(\ket{HV} + \ket{VH}), \\
+\ket{\psi^-} &= \frac{1}{\sqrt{2}}(\ket{HV} - \ket{VH}).
+\end{align*}
+
+\paragraph{Entanglement and Local Realism.}
+Entangled states exhibit correlations that cannot be explained by local hidden-variable theories. This fundamental nonlocality is at the heart of quantum mechanics and is what leads to the possibility of violating Bell's inequality in suitably designed experiments.
+
+\subsection{Bell's Inequality}
+Inspired by the Einstein-Podolsky-Rosen paradox, Bell formulated an inequality that any local-realistic theory must satisfy \cite{Bell1964}. In the \emph{Clauser-Horne-Shimony-Holt} (CHSH) form, it reads
+\[
+S = | E(a,b) - E(a,b') + E(a',b) + E(a',b') | \le 2,
+\]
+where $E(a,b)$ represents the correlation coefficient for measurement settings $a$ and $b$ on two spatially separated qubits. Quantum mechanics predicts that \emph{entangled} states can yield
+\[
+S_\text{QM} \le 2\sqrt{2},
+\]
+thus violating the classical bound of 2. This violation is direct evidence that quantum correlations cannot be explained by local hidden variables.
+
+\paragraph{Measurement Settings.}
+In practice, to observe a violation of the Bell or CHSH inequality, we measure correlations in appropriately chosen linear (and sometimes circular) polarization bases. By adjusting wave plates and polarization beam splitters, we can measure along any basis. The ``maximum'' violation of $2\sqrt{2}$ is typically obtained for particular rotations separated by $45^\circ$ or $22.5^\circ$ increments in polarization.
+
+\subsection{Density Matrix and Quantum Tomography}
+While \emph{pure states} can be represented by a state vector $\ket{\psi}$, real experimental states are often \emph{mixed}, arising from statistical or environmental noise. In these cases, the density operator (or density matrix) $\rho$ provides a complete description of the system:
+\[
+\rho = \sum_i p_i \ket{\phi_i}\bra{\phi_i},
+\]
+with probabilities $p_i$ for the mixture of pure states $\ket{\phi_i}$. 
+
+\paragraph{Properties of the Density Matrix.}
+\begin{itemize}
+    \item $\rho$ is \emph{Hermitian}: $\rho = \rho^\dagger$.
+    \item $\rho$ is \emph{positive semi-definite}: its eigenvalues are nonnegative.
+    \item $\text{Tr}(\rho) = 1$.
+\end{itemize}
+
+\paragraph{Quantum Tomography.}
+To experimentally reconstruct $\rho$, we perform measurements in a complete set of bases, typically corresponding to the Pauli operators $(\sigma_x, \sigma_y, \sigma_z)$ for each qubit. For two qubits, one reconstructs the $4\times 4$ matrix by combining measurement outcomes from nine basis settings (i.e., all combinations $XX, XY, \ldots, ZZ$). The measured coincidence counts allow one to extract expectation values $\langle \sigma_i \otimes \sigma_j \rangle$, which then determine the matrix elements of $\rho$. 
+
+In other words, we can write:
+\[
+\rho = \frac{1}{4} \sum_{i,j=0}^{3} s_{ij}\,\sigma_i \otimes \sigma_j,
+\]
+where $\sigma_0$ is the identity matrix and $\sigma_{1,2,3}$ are the usual Pauli matrices. The coefficients $s_{ij}$ are obtained from the measured correlations and single-qubit observables.
+
+\paragraph{Entanglement Witnesses and PPT Criterion.}
+To identify entanglement, we can check if $\rho$ has a nonpositive partial transpose (the \emph{PPT criterion}) or if it violates an \emph{entanglement witness} condition. For two qubits, the PPT criterion is both necessary and sufficient: a state is entangled if its partial transpose has a negative eigenvalue.
+
+\bigskip
+
+\noindent
+In the following sections of the report, we will describe how these theoretical ideas were put into practice to generate polarization-entangled photon pairs, measure their correlation functions, and perform quantum tomography to assess the entanglement fidelity and purity of the states we produced.
