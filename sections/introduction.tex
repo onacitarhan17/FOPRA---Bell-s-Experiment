@@ -1,2 +1,31 @@
 \section{Introduction}
-The introduction should provide background information about the experiment, the objectives, and the hypothesis.
+Over the past century, quantum mechanics has presented several counterintuitive phenomena that sharply depart from the established tenets of classical physics. Of all these peculiarities, \emph{entanglement} stands out as one of the most intriguing and foundational aspects, placing quantum theory in direct conflict with our classical notions of locality and realism. In their seminal paper of 1935, Einstein, Podolsky, and Rosen (EPR) raised the question of whether quantum mechanics is a complete description of physical reality \cite{EPR}. EPR’s concerns led to the concept of \emph{hidden variables} as possible explanations for the nonclassical correlations displayed by quantum systems.
+
+It was not until 1964 that John Bell formulated a set of inequalities (now referred to as \emph{Bell’s inequalities}) to test if these hidden-variable theories could account for all observed quantum phenomena. Specifically, Bell’s theorem shows that any local-realistic theory must obey these inequalities, whereas appropriately prepared quantum systems can violate them. Experimental violations of Bell’s inequality therefore suggest that no local hidden-variable theory can fully capture the predictions of quantum mechanics.
+
+\subsection*{Motivation and Aim of the Experiment}
+In this Advanced Laboratory Course experiment, we focus on generating and characterizing \emph{polarization-entangled} photon pairs. The experiment is designed to address fundamental questions about quantum correlations and to explore key tools employed in modern quantum information science:
+
+\begin{itemize}
+    \item \textbf{Generation of Entangled Photons}: Using a nonlinear optical process known as Spontaneous Parametric Down Conversion (SPDC), we create pairs of photons whose polarizations are entangled. By carefully adjusting the crystal orientation and compensators, we aim to produce one of the four \emph{Bell states}, such as $\ket{\phi^+} = \frac{1}{\sqrt{2}}\bigl(\ket{HH} + \ket{VV}\bigr)$. 
+    
+    \item \textbf{Measurement of Correlation Functions}: To confirm the presence of entanglement, we measure photon correlations in different polarization bases. In particular, we examine correlation functions for multiple angle settings of half-wave and quarter-wave plates. By rotating these wave plates, we can project our photonic qubits onto various polarization bases (e.g., horizontal/vertical, diagonal/antidiagonal, right/left circular). These correlation measurements are essential for characterizing entanglement and for performing quantum state tomography.
+
+    \item \textbf{Violation of Bell’s Inequality}: We combine the correlation measurements in carefully chosen settings to test the \emph{Clauser-Horne-Shimony-Holt} (CHSH) form of Bell’s inequality. Local hidden-variable theories demand that a certain combination of correlation values (the CHSH parameter $S$) does not exceed 2. Quantum mechanics, however, predicts $S$ can reach values up to $2\sqrt{2}$. Our aim is to empirically demonstrate $S>2$, thus ruling out local realism under the assumptions of the measurement.
+
+    \item \textbf{Quantum State Tomography}: Beyond detecting the presence of entanglement, we further reconstruct the full density matrix of the generated two-photon state. Quantum tomography involves systematic measurements in a complete set of polarization bases (often taken to be $X$, $Y$, and $Z$ for each qubit, leading to $3\times 3 = 9$ total basis combinations). From these measurements, we retrieve the density matrix and can then quantify properties such as purity, fidelity (with respect to an ideal Bell state), and negativity (related to the Positive Partial Transpose criterion). These metrics help us evaluate the quality of our entangled source and quantify the degree of entanglement.
+
+\end{itemize}
+
+\subsection*{Structure of the Report}
+The sections that follow provide a detailed account of the physics background (\emph{Qubits and Entanglement}, \emph{Bell’s Inequality}, and \emph{Density Matrix and Quantum Tomography}). Subsequently, we describe the experimental apparatus used to generate and analyze polarization-entangled photons, including the specific steps required to observe the violation of Bell’s inequality and to conduct a complete quantum state tomography. Finally, we present and discuss our measured results, comparing them with theoretical expectations. The experiment thereby serves as a practical demonstration of several core concepts in quantum information and quantum optics, connecting fundamental theory with cutting-edge applications such as quantum cryptography, teleportation, and quantum computing.
+
+By carrying out the tasks in the experiment manual, we gain a concrete understanding of:
+\begin{itemize}
+    \item How to align and optimize the nonlinear crystal setup for consistent generation of entangled photons,
+    \item The relevance of wave plate adjustments for projecting qubits onto different measurement bases,
+    \item Strategies for collecting and analyzing coincidence counts that confirm quantum correlations,
+    \item And finally, how to perform the data analysis leading to Bell inequality violation and complete state reconstruction.
+\end{itemize}
+
+These goals underscore the vital role of photonic qubits in testing the foundations of quantum mechanics, as well as their importance in emerging quantum technologies. 
