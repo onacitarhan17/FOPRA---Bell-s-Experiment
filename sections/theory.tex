@@ -31,46 +31,84 @@ If this state cannot be decomposed as a product of two single-qubit states, it i
 Entangled states exhibit correlations that cannot be explained by local hidden-variable theories. This fundamental nonlocality is at the heart of quantum mechanics and is what leads to the possibility of violating Bell's inequality in suitably designed experiments.
 
 \subsection{Bell's Inequality}
-Inspired by the Einstein-Podolsky-Rosen paradox, Bell formulated an inequality that any local-realistic theory must satisfy \cite{Bell1964}. In the \emph{Clauser-Horne-Shimony-Holt} (CHSH) form, it reads
-\[
-S = | E(a,b) - E(a,b') + E(a',b) + E(a',b') | \le 2,
-\]
-where $E(a,b)$ represents the correlation coefficient for measurement settings $a$ and $b$ on two spatially separated qubits. Quantum mechanics predicts that \emph{entangled} states can yield
-\[
-S_\text{QM} \le 2\sqrt{2},
-\]
-thus violating the classical bound of 2. This violation is direct evidence that quantum correlations cannot be explained by local hidden variables.
+Albert Einstein, Boris Podolsky, and Nathan Rosen originally posed the question of whether quantum mechanics provides a complete description of reality \cite{EPR}, suggesting the possibility that yet-to-be-discovered \emph{hidden variables} could explain the seemingly random outcomes of quantum experiments in a deterministic, local way. In 1964, John Bell offered a way to distinguish between the predictions of such local hidden-variable (LHV) theories and the predictions of quantum mechanics. Specifically, Bell derived an inequality that any LHV model must satisfy, whereas certain \emph{entangled} quantum states can violate it \cite{Bell1964}. 
 
-\paragraph{Measurement Settings.}
-In practice, to observe a violation of the Bell or CHSH inequality, we measure correlations in appropriately chosen linear (and sometimes circular) polarization bases. By adjusting wave plates and polarization beam splitters, we can measure along any basis. The ``maximum'' violation of $2\sqrt{2}$ is typically obtained for particular rotations separated by $45^\circ$ or $22.5^\circ$ increments in polarization.
-
-\subsection{Density Matrix and Quantum Tomography}
-While \emph{pure states} can be represented by a state vector $\ket{\psi}$, real experimental states are often \emph{mixed}, arising from statistical or environmental noise. In these cases, the density operator (or density matrix) $\rho$ provides a complete description of the system:
+\paragraph{CHSH Inequality.}
+One particularly convenient form of Bell’s inequality was introduced by Clauser, Horne, Shimony, and Holt (CHSH). In this framework, each of two distant observers (often called Alice and Bob) can choose between two measurement settings, labeled $a$ and $a'$ for Alice, and $b$ and $b'$ for Bob. Each measurement yields a binary outcome denoted by $\pm 1$. We then define the correlation coefficient 
 \[
-\rho = \sum_i p_i \ket{\phi_i}\bra{\phi_i},
+E(a,b) \;=\; \langle A(a) \, B(b) \rangle,
 \]
-with probabilities $p_i$ for the mixture of pure states $\ket{\phi_i}$. 
+where $A(a)$ and $B(b)$ are the measurement outcomes (each being $\pm1$) for the chosen settings $a$ and $b$, respectively. These correlations must satisfy the CHSH version of Bell's inequality:
+\[
+S \;=\; \bigl|\;E(a,b) \,-\,E(a,b') \;+\;E(a',b) \;+\;E(a',b')\bigr| \;\;\le\; 2.
+\]
+A local-realistic theory cannot surpass this bound. Quantum mechanics, however, predicts that certain entangled states allow for correlations such that
+\[
+S_{\mathrm{QM}} \;\le\; 2\sqrt{2}\,\approx\,2.828,
+\]
+thus exceeding the classical limit of 2. Observing this \emph{Bell violation} in an experiment is a strong indicator that the measured system cannot be described by any local hidden-variable model.
 
-\paragraph{Properties of the Density Matrix.}
+\paragraph{Correlation Functions and Measurement Settings.}
+In practical optical experiments with photons, the observables often correspond to measuring the polarization along chosen axes. For instance, a single-qubit polarization measurement can be described by a projection onto linear polarizations (horizontal $\ket{H}$, vertical $\ket{V}$, or any rotation thereof) or onto circular polarizations (right-handed $\ket{R}$, left-handed $\ket{L}$). By adjusting wave plates and polarization beam splitters, we can implement the measurement settings $a,a'$ (for Alice) and $b,b'$ (for Bob). To maximize the possible violation (i.e., to achieve $S_{\mathrm{QM}}=2\sqrt{2}$ in an ideal scenario), one typically chooses measurement directions separated by $\pm45^\circ$ or $\pm22.5^\circ$. 
+
 \begin{itemize}
-    \item $\rho$ is \emph{Hermitian}: $\rho = \rho^\dagger$.
-    \item $\rho$ is \emph{positive semi-definite}: its eigenvalues are nonnegative.
-    \item $\text{Tr}(\rho) = 1$.
+    \item \textbf{Example Settings for Maximum Violation}: For an entangled state such as the singlet state $\ket{\psi^-}=\frac{1}{\sqrt{2}}(\ket{HV}-\ket{VH})$, one can choose measurement bases in the equatorial plane of the Bloch sphere at angles differing by $45^\circ$. This arrangement leads to the largest predicted quantum correlations and the maximal violation of the CHSH inequality.
 \end{itemize}
 
-\paragraph{Quantum Tomography.}
-To experimentally reconstruct $\rho$, we perform measurements in a complete set of bases, typically corresponding to the Pauli operators $(\sigma_x, \sigma_y, \sigma_z)$ for each qubit. For two qubits, one reconstructs the $4\times 4$ matrix by combining measurement outcomes from nine basis settings (i.e., all combinations $XX, XY, \ldots, ZZ$). The measured coincidence counts allow one to extract expectation values $\langle \sigma_i \otimes \sigma_j \rangle$, which then determine the matrix elements of $\rho$. 
+\noindent
+In an actual experiment, one records the coincidence counts (simultaneous photon detection events) in the relevant detectors. From these, one computes empirical estimates of $E(a,b)$, $E(a,b')$, $E(a',b)$, and $E(a',b')$. Substituting these estimates into the CHSH parameter $S$ reveals whether or not a Bell violation is observed.
 
-In other words, we can write:
+\subsection{Density Matrix and Quantum Tomography}
+Despite being derived largely for \emph{pure states}, the theoretical arguments surrounding entanglement and Bell's inequalities are readily extended to \emph{mixed states} through the density matrix formalism. Real-world experiments inevitably suffer from noise and imperfections, meaning that the generated states may not be perfectly pure. Hence, the density matrix $\rho$ offers the most general description of the quantum state.
+
+\paragraph{Definition and Properties.}
+A density matrix (or density operator) $\rho$ for a quantum state is written as:
 \[
-\rho = \frac{1}{4} \sum_{i,j=0}^{3} s_{ij}\,\sigma_i \otimes \sigma_j,
+\rho \;=\; \sum_i \,p_i\,\ket{\phi_i}\bra{\phi_i},
 \]
-where $\sigma_0$ is the identity matrix and $\sigma_{1,2,3}$ are the usual Pauli matrices. The coefficients $s_{ij}$ are obtained from the measured correlations and single-qubit observables.
+where each $\ket{\phi_i}$ is a pure state and $p_i$ is the classical probability associated with that pure state, satisfying $\sum_i p_i=1$. The density matrix must obey:
+\begin{itemize}
+    \item \textbf{Hermiticity}: $\rho = \rho^\dagger$. 
+    \item \textbf{Positive semi-definiteness}: $\rho \ge 0$, implying all eigenvalues are nonnegative.
+    \item \textbf{Normalization}: $\mathrm{Tr}(\rho) = 1$.
+\end{itemize}
+For \emph{pure states}, $\rho$ can be expressed as $\rho=\ket{\psi}\bra{\psi}$, and it additionally satisfies $\rho^2=\rho$, giving $\mathrm{Tr}(\rho^2)=1$. Mixed states have $\mathrm{Tr}(\rho^2) <1$.
 
-\paragraph{Entanglement Witnesses and PPT Criterion.}
-To identify entanglement, we can check if $\rho$ has a nonpositive partial transpose (the \emph{PPT criterion}) or if it violates an \emph{entanglement witness} condition. For two qubits, the PPT criterion is both necessary and sufficient: a state is entangled if its partial transpose has a negative eigenvalue.
+\paragraph{Quantum State Tomography.}
+Tomography is the procedure by which the density matrix is experimentally reconstructed from a set of measurement outcomes. For a single qubit, one typically measures in at least three orthogonal bases (commonly the eigenbases of the Pauli matrices: $X, Y, Z$). For a two-qubit system, a complete tomography usually requires measurements of \emph{both} qubits in all combinations of the $X, Y, Z$ bases, giving nine distinct settings in total (e.g., $XX, XY, XZ, YX, \dots, ZZ$).
+
+From each setting, one extracts coincidence counts $C_{ij}$ that correspond to projecting onto the basis states $\ket{i}\otimes\ket{j}$ (where $i,j$ can be $H$, $V$, or any other basis label). Normalizing these counts yields probabilities, which in turn give the expectation values of the tensor products of Pauli matrices, 
+\[
+\expval{\sigma_i \otimes \sigma_j}.
+\]
+Using the identity:
+\[
+\rho \;=\; \frac{1}{4}\;\sum_{i,j=0}^{3}\; s_{ij}\; \sigma_i \otimes \sigma_j,
+\]
+where $\sigma_0$ is the $2\times 2$ identity matrix and $\sigma_{1,2,3}\equiv(\sigma_x,\sigma_y,\sigma_z)$ are the Pauli operators, we can solve for the coefficients $s_{ij}$ by matching them to the measured correlation values. 
+
+\paragraph{Entanglement Criteria: PPT and Entanglement Witnesses.}
+Once the density matrix is reconstructed, determining whether the state is entangled is achieved by any of several criteria:
+
+\begin{itemize}
+    \item \textbf{Positive Partial Transpose (PPT) Criterion:} For a bipartite system in a state $\rho$, define the partial transpose (with respect to one subsystem, say Alice) by transposing only the indices pertaining to that subsystem. If $\rho$ is separable, this partial transpose remains a valid density matrix (i.e.\ it remains positive semi-definite). Conversely, if the partial transpose has at least one negative eigenvalue, then $\rho$ is an \emph{entangled} state. For two qubits, this PPT criterion is both necessary and sufficient.
+    
+    \item \textbf{Entanglement Witnesses:} An operator $W$ is called an entanglement witness if it is constructed so that $\mathrm{Tr}(W\,\rho_\text{sep}) \ge 0$ for \emph{all} separable states $\rho_\text{sep}$, while $\mathrm{Tr}(W\,\rho_\text{ent}) < 0$ for \emph{at least one} entangled state $\rho_\text{ent}$. Thus, if the measured state yields a negative expectation value for $W$, it is guaranteed to be entangled. In practice, these witnesses can be optimized for specific target states (e.g.\ certain Bell states) and can offer a relatively simple experimental test of entanglement.
+\end{itemize}
+
+\paragraph{State Characterization: Fidelity and Purity.}
+With a reconstructed $\rho$ at hand, we can also quantify the ``closeness'' to an ideal target state $\ket{\psi}\bra{\psi}$ by computing the \emph{fidelity}:
+\[
+F(\rho, \ket{\psi}) \;=\; \bra{\psi}\,\rho\,\ket{\psi}.
+\]
+If $\rho$ is pure, $F$ reaches 1 if and only if $\rho = \ket{\psi}\bra{\psi}$. More generally, the fidelity is between 0 and 1 and provides a convenient measure of how well the experimentally produced state matches the desired theoretical one.
+
+Moreover, the \emph{purity} of the state can be quantified via
+\[
+\mathcal{P} \;=\; \mathrm{Tr}(\rho^2).
+\]
+A perfectly pure state has $\mathcal{P}=1$, whereas a completely mixed (maximally disordered) state in a $d$-dimensional system has $\mathcal{P}=\frac{1}{d}$.
 
 \bigskip
 
-\noindent
-In the following sections of the report, we will describe how these theoretical ideas were put into practice to generate polarization-entangled photon pairs, measure their correlation functions, and perform quantum tomography to assess the entanglement fidelity and purity of the states we produced.
+In summary, Bell’s inequality (particularly its CHSH form) and quantum tomography provide complementary ways to investigate and quantify entanglement in photonic qubits. By carefully choosing measurement bases, recording correlation functions, and reconstructing the density matrix, one can conclusively demonstrate the nonclassical, nonlocal nature of quantum mechanics.
