@@ -52,6 +52,7 @@ For both cases, the angles for the half-wave plates were changed by rotating the
 \end{table}
 
 \subsubsection{Calculation of Correlation Functions}
+\label{subsubsec:correlation_functions}
 To calculate the correlation values, first we need to calculate relative frequencies for each state. Relative frequencies are calculated by dividing the coincidence counts by the total number of counts:
 \begin{equation}
     f_{ij} = \frac{C_{ij}}{\sum_{i,j} C_{ij}} \quad (i,j \in \{H, V\})
@@ -76,40 +77,62 @@ with $i, j \in \{H, V\}$. Correlation values for both cases can be seen below:
     \label{tab:correlation_values}
 \end{table}
 
-\subsubsection{Visibility}
-The visibility can be used to parameterize the contrast of measured graphs \cite{manual}. It is defined as the ratio of the difference between the maximum and minimum value of the correlation function to the sum of the maximum and minimum values.
-Since a correlation function can be bounded by -1 and 1, the visibility of this function would lead to $\frac{2}{0}$ in a perfect experimental setup. This is why we need to fit the correlation function to a function to calculate the visibility. Since the correlation function is a sinusoidal function, we can fit it to a sinusoidal function. The fit function is given as:
-\begin{equation}
-    f(\theta) = A \cdot \sin(B \cdot \theta + C) + D
-\end{equation}
-The fits for both cases can be seen below:
+The relation between the correlation values and the angles can be visualized by plotting the correlation values against the angles. Since the correlation values are sinusoidal functions, we can fit the correlation values to a sinusoidal function. The fits for both cases can be seen below:
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/fit_1.png}
-        \caption{Fit for the first case.}
+        \caption{Case 1.}
         \label{fig:fit_1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/fit_2.png}
-        \caption{Fit for the second case.}
+        \caption{Case 2.}
         \label{fig:fit_2}
     \end{subfigure}
-    \caption{Comparison of fits for the first and second cases.}
+    \caption{Correlation values for both cases. 
+        $f(\theta) = A \cdot \sin(B \cdot \theta + C) + D$ is used as the fit function.
+    }
     \label{fig:fit_comparison}
 \end{figure}
 
+\subsubsection{Visibility}
+The visibility can be used to parameterize the contrast of measured graphs \cite{manual}. It is defined as the ratio of the difference between the maximum and minimum value of the correlation function to the sum of the maximum and minimum values.
+Since a correlation function can be bounded by -1 and 1, the visibility of this function would lead to $\frac{2}{0}$ in a perfect experimental setup. 
+To deduce the visibility of the correlation function, we can use a fit function that maps a flat correlation function to 0 and a sinusoidal correlation function to 1.
+This can be easily achieved by using the following formula:
+\[\mathcal{V} = \frac{\max_{\theta} \tilde{f}(\theta) - \min_{\theta} \tilde{f}(\theta)}{2}\]
 
+This formula will result in a value between 0 and 1, where 0 indicates a flat correlation function and 1 indicates a correlation function varrying between -1 and 1. By using this formula, we can calculate the visibility of the correlation functions for both cases.
+{\itshape Case 1} has a visibility of 0.934, while {\itshape Case 2} has a visibility of 0.791.
 
-Discussion on the necessity of two correlation functions for entanglement detection.
-
-Calculation of visibility using the provided fit function.
+\subsubsection{Necessity of Two Correlation Functions}
+In this experiment, (as any other Bell test experiment) two correlation functions are needed to detect entanglement. Entanglement is a quantum correlation and to be able to detect it, 
+we need to detect correlations (measuring correlation functions) in at least two different bases. Just measuring the correlation in one basis is not enough to detect entanglement, since 
+correlations in one basis can be explained by classical correlations and local hidden variables\cite{bell,chsh}.  
 
 
 \subsection{Violation of Bell’s Inequality}
+In the second part of the experiment, the aim is to demonstrate the violation of CHSH inequality which is a generalization of Bell's theorem\cite{chsh}. As in the first part of the experiment
+here we also have one half-wave plate for each party. Unlike the first part, we only have 4 sets of angles for the half-wave plates. The angles are as follows:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{Alice} & \multicolumn{2}{c|}{Bob} \\ \hline
+        $\alpha$ & $\alpha'$ & $\beta$ & $\beta'$ \\ \hline
+        $22.5^\circ$ & $0^\circ$ & $11.25^\circ$ & $-11.25^\circ$ \\ \hline
+    \end{tabular}
+    \caption{Measurement settings for Alice and Bob.}
+    \label{tab:measurement_settings}
+\end{table}
+
+
+
 Experimental settings for Alice and Bob’s angles.
 
 Calculation of correlation functions and error propagation.
