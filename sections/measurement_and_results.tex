@@ -61,6 +61,7 @@ To calculate the correlation values, first we need to calculate relative frequen
 After calculating the relative frequencies, we can calculate the correlation values using the following formula with the relative frequencies from \hyperref[tab:coincidence_counts_case1]{Table \ref*{tab:coincidence_counts_case1}} and \hyperref[tab:coincidence_counts_case2]{Table \ref*{tab:coincidence_counts_case2}}:
 \begin{equation}
     K_{ij}^{ex} = f_{HH} - f_{HV} - f_{VH} + f_{VV}
+    \label{eq:correlation_function}
 \end{equation}
 with $i, j \in \{H, V\}$. Correlation values for both cases can be seen below:
 \begin{table}[h!]
@@ -116,8 +117,11 @@ correlations in one basis can be explained by classical correlations and local h
 
 
 \subsection{Violation of Bell’s Inequality}
-In the second part of the experiment, the aim is to demonstrate the violation of CHSH inequality which is a generalization of Bell's theorem\cite{chsh}. As in the first part of the experiment
-here we also have one half-wave plate for each party. Unlike the first part, we only have 4 sets of angles for the half-wave plates. The angles are as follows:
+In the second part of the experiment, the aim is to demonstrate the violation of CHSH inequality which is a 
+generalization of Bell's theorem\cite{chsh}. As in the first part of the experiment
+here we also have one half-wave plate for each party. Unlike the first part, we only have 2 different HWP angles
+for each party. The coincidence counts were recorded for each of the 4 possible combinations of the angles.
+The angles are as follows:
 
 \begin{table}[h!]
     \centering
@@ -131,19 +135,130 @@ here we also have one half-wave plate for each party. Unlike the first part, we 
     \label{tab:measurement_settings}
 \end{table}
 
+The aim of this part is to show that the CHSH inequality is violated. 
+The CHSH inequality is defined as follows\cite{chsh}:
+\begin{equation}
+    |S| \leq 2
+\end{equation}
+where
+\begin{equation}
+    S = E(\alpha, \beta) + E(\alpha, \beta') + E(\alpha', \beta) - E(\alpha', \beta')
+\end{equation}
+
+The experimental estimation of the correlations are calculated as follows:
+\begin{equation}
+    E(\alpha, \beta) = \frac{C_{HH}(\alpha,\beta) - C_{HV}(\alpha,\beta') - C_{VH}(\alpha',\beta) + C_{VV}(\alpha',\beta')}{C_{HH}(\alpha,\beta) + C_{HV}(\alpha,\beta') + C_{VH}(\alpha',\beta) + C_{VV}(\alpha',\beta')}
+\end{equation}
+
+which is exatly the same as the Equation \ref{eq:correlation_function}.
+By using these experimental estimations, we can calculate the CHSH value and show that it is greater than 2.
+We assume that the coincidences follow Poisson distribution and the total number of counts
+is constant. By using these assumptions, we can calculate the the CHSH value and the error propagation.
+The experimental CHSH value is calculated as $2.385 \pm0.015 $ which is greater than the theoretical
+maximum value of 2 for classical correlations. This result shows that the CHSH inequality is 
+violated and the system is entangled. However, this result is smaller than the 
+theoretical maximum value of $2\sqrt{2} \approx 2.828$ for quantum correlations. 
+This difference can be explained by the imperfections in the experimental setup.
 
 
-Experimental settings for Alice and Bob’s angles.
 
-Calculation of correlation functions and error propagation.
 
-Interpretation of results demonstrating Bell inequality violation.
+
 
 \subsection{Quantum State Tomography}
-Measurement procedure for the four Bell states (\(|\phi^+\rangle\), \(|\phi^-\rangle\), \(|\psi^+\rangle\), \(|\psi^-\rangle\)).
 
-Reconstruction of density matrices from experimental data.
+In the last part of the experiment, the aim is to do a quantum state tomography for each of the Bell states.
+The angles of the waveplates and the correspğonding transformations are given in \hyperref[subsec:measurement_system]{Section \ref*{subsec:measurement_system}}.
+As discussed in the \hyperref[subsec:tomography]{Section \ref*{subsec:tomography}}, 
+the density matrix of the Bell states can be calculated by using the coincidence counts.
+The experimentally constructed density matrices for the Bell states are as follows:
 
-Calculation of fidelity, purity, and eigenvalues.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|}
+        \hline
+        $|\phi^+\rangle$ \\ \hline
+        $\begin{pmatrix}
+            0.48 + 0.00i & 0.00 + 0.01i & -0.06 + 0.03i & 0.40 + 0.07i \\
+            0.00 - 0.01i & 0.02 + 0.00i & 0.00 + 0.03i & 0.06 - 0.03i \\
+            -0.06 - 0.03i & 0.00 - 0.03i & 0.02 + 0.00i & -0.00 - 0.01i \\
+            0.40 - 0.07i & 0.06 + 0.03i & -0.00 + 0.01i & 0.48 + 0.00i \\
+        \end{pmatrix}$ \\ \hline
+        $|\phi^-\rangle$ \\ \hline
+        $\begin{pmatrix}
+            0.47 + 0.00i & 0.04 - 0.01i & 0.08 - 0.05i & -0.34 - 0.12i \\
+            0.04 + 0.01i & 0.03 + 0.00i & 0.01 - 0.02i & -0.08 + 0.05i \\
+            0.08 + 0.05i & 0.01 + 0.02i & 0.03 + 0.00i & -0.04 + 0.01i \\
+            -0.34 + 0.12i & -0.08 - 0.05i & -0.04 - 0.01i & 0.47 + 0.00i \\
+        \end{pmatrix}$ \\ \hline
+        $|\psi^+\rangle$ \\ \hline
+        $\begin{pmatrix}
+            0.03 + 0.00i & 0.05 - 0.04i & 0.05 - 0.05i & 0.01 - 0.04i \\
+            0.05 + 0.04i & 0.47 + 0.00i & 0.40 + 0.07i & -0.05 + 0.05i \\
+            0.05 + 0.05i & 0.40 - 0.07i & 0.47 + 0.00i & -0.05 + 0.04i \\
+            0.01 + 0.04i & -0.05 - 0.05i & -0.05 - 0.04i & 0.03 + 0.00i \\
+        \end{pmatrix}$ \\ \hline
+        $|\psi^-\rangle$\\ \hline
+        $\begin{pmatrix}
+            0.06 + 0.00i & 0.10 - 0.03i & -0.15 + 0.07i & 0.02 - 0.01i \\
+            0.10 + 0.03i & 0.44 + 0.00i & -0.37 - 0.10i & 0.15 + 0.07i \\
+            -0.15 - 0.07i & -0.37 + 0.10i & 0.44 + 0.00i & -0.10 + 0.03i \\
+            0.02 + 0.01i & 0.15 - 0.07i & -0.10 - 0.03i & 0.06 + 0.00i \\
+        \end{pmatrix}$ \\ \hline
+    \end{tabular}
+    \caption{Experimentally constructed density matrices of the Bell states.}
+    \label{tab:density_matrices}
+\end{table}
 
-Proof of entanglement using PPT criterion and entanglement witnesses.
+As discussed in the \hyperref[subsec:tomography]{Section \ref*{subsec:tomography}}, we can calculate
+the fidelity, purity and eigenvalues of the density matrices and prove entanglement using the PPT criterion and entanglement witnesses.
+The calculated values for the reconstructed Bell states are as follows:
+\newpage
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Bell State & Purity & Fidelity & Eigenvalues \\ \hline
+        $|\phi^+\rangle$ & 0.80 & 0.88 & (0.89, 0.10, 0.04, -0.04) \\ \hline
+        $|\phi^-\rangle$ & 0.71 & 0.80 & (0.85, 0.16, 0.03, -0.04) \\ \hline
+        $|\psi^+\rangle$ & 0.78 & 0.87 & (0.89, 0.08, 0.06, -0.03) \\ \hline
+        $|\psi^-\rangle$ & 0.78 & 0.80 & (0.90, 0.14, 0.01, -0.05) \\ \hline
+    \end{tabular}
+    \caption{Purity and fidelity and eigenvalues of the reconstructed Bell states.}
+    \label{tab:purity_fidelity}
+\end{table}
+
+Reconstructed density matrices have negative eigenvalues, thus they are not positive semidefinite,
+which means that they are not physical states. This is also due to the imperfections in the experimental setup.
+Another issue is that reconstructed density matrices have different eigenvalues than the theoretical ones.
+Any physical pure state has only one non-zero eigenvalue which is equal to 1 and Bell states are pure states.
+Thus, the reconstructed density matrices are not pure states.
+The purity of the reconstructed density matrices are also less than 1.
+
+\subsubsection{Entanglement Verification of \texorpdfstring{$|\phi^+\rangle$}{|phi+>} with PPT Criterion}
+PPT criterion states that if the partial transpose of the density matrix is positive semidefinite,
+then the state is separable. Conversely, if the partial transpose has at least one negative eigenvalue,
+then the state is an entangled state. The partial transpose of the reconstructed $|\phi^+\rangle$ is as follows:
+\begin{equation}
+    {|\phi^+\rangle}^{T_B} = \begin{pmatrix}
+        0.48 + 0.00i & 0.00 + 0.01i & -0.06 + 0.03i & 0.00 - 0.03i \\
+        0.00 - 0.01i & 0.02 + 0.00i & 0.40 - 0.07i & 0.06 + 0.03i \\
+        -0.06 - 0.03i & 0.40 + 0.07i & 0.02 + 0.00i & -0.00 - 0.01i \\
+        0.00 + 0.03i & 0.06 - 0.03i & -0.00 + 0.01i & 0.48 + 0.00i \\
+    \end{pmatrix}
+\end{equation}
+
+The eigenvalues of the partial transpose are (-0.39, 0.39, 0.46, 0.54) which means that the state is entangled.
+
+\subsubsection{Entanglement Verification of \texorpdfstring{$|\phi^+\rangle$}{|phi+>} with Entanglement Witnesses}
+As discussed in the \hyperref[subsec:tomography]{Section \ref*{subsec:tomography}},
+an entanglement witness is a Hermitian operator that has a negative expectation value for entangled states and
+entanglement witnesses can be optimized to detect entanglement in a specific state.
+The optimized entanglement witness for the $|\phi^+\rangle$ state is as follows:
+
+\begin{equation}
+    W = \frac{1}{2} I - |\phi^+\rangle\langle\phi^+|
+\end{equation}
+
+The expectation value  of the entanglement witness for the reconstructed
+$|\phi^+\rangle$ state is $Tr(W|\phi^+\rangle\langle\phi^+|) = -0.38$ which is less than 0, thus the state is entangled.
