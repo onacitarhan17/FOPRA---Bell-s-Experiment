@@ -28,7 +28,7 @@ If this state cannot be decomposed as a product of two single-qubit states, it i
 \end{align*}
 
 \paragraph{Entanglement and Local Realism.}
-Entangled states exhibit correlations that cannot be explained by local hidden-variable theories. This fundamental nonlocality is at the heart of quantum mechanics and is what leads to the possibility of violating Bell's inequality in suitably designed experiments.
+Entangled states exhibit correlations that cannot be explained by local hidden-variable theories. Quantum mechanics produces connections between distant particles that no local theory can explain, and it is these connections that allow Bell’s inequality to be violated in properly designed experiments.
 
 \subsection{Bell's Inequality}
 Albert Einstein, Boris Podolsky, and Nathan Rosen originally posed the question of whether quantum mechanics provides a complete description of reality \cite{EPR}, suggesting the possibility that yet-to-be-discovered \emph{hidden variables} could explain the seemingly random outcomes of quantum experiments in a deterministic, local way. In 1964, John Bell offered a way to distinguish between the predictions of such local hidden-variable (LHV) theories and the predictions of quantum mechanics. Specifically, Bell derived an inequality that any LHV model must satisfy, whereas certain \emph{entangled} quantum states can violate it \cite{bell}. 
@@ -56,7 +56,12 @@ In practical optical experiments with photons, the observables often correspond 
 \end{itemize}
 
 \noindent
-In an actual experiment, one records the coincidence counts (simultaneous photon detection events) in the relevant detectors. From these, one computes empirical estimates of $E(a,b)$, $E(a,b')$, $E(a',b)$, and $E(a',b')$. Substituting these estimates into the CHSH parameter $S$ reveals whether or not a Bell violation is observed.
+In an actual experiment, one records the coincidence counts (simultaneous photon detection events) in the relevant detectors. From these, one computes empirical estimates of $E(a,b)$, $E(a,b')$, $E(a',b)$, and $E(a',b')$.From the recorded correlations one computes
+\[
+  S \;=\;\Bigl|\,E(a,b)\;-\;E(a,b')\;+\;E(a',b)\;+\;E(a',b')\Bigr|\!,
+\]
+and directly checks whether \(S\) exceeds the classical bound of 2.
+
 
 \subsection{Density Matrix and Quantum Tomography}
 \label{subsec:tomography}
@@ -112,4 +117,5 @@ A perfectly pure state has $\mathcal{P}=1$, whereas a completely mixed (maximall
 
 \bigskip
 
-In summary, Bell’s inequality (particularly its CHSH form) and quantum tomography provide complementary ways to investigate and quantify entanglement in photonic qubits. By carefully choosing measurement bases, recording correlation functions, and reconstructing the density matrix, one can conclusively demonstrate the nonclassical, nonlocal nature of quantum mechanics.
+Quantum mechanics predicts correlations between spatially separated particles that defy any local explanation, giving rise to violations of Bell’s inequality in appropriately designed experiments.
+By carefully choosing measurement bases, recording correlation functions, and reconstructing the density matrix, one can conclusively demonstrate the nonclassical nature of quantum mechanics.
